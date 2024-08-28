@@ -18,14 +18,23 @@
         required
         minlength="2"
       />
-      <span class="erro__texto" *ngIf="f.controls['nome']?.errors?.['required']"
-        >O campo deve ser preenchido.</span
+      <div
+        *ngIf="
+          (f.controls['nome']?.touched && f.controls['nome']?.invalid) ||
+          f.controls['nome']?.dirty
+        "
       >
-      <span
-        class="erro__texto"
-        *ngIf="f.controls['nome']?.errors?.['minlength']"
-        >O campo deve conter no mínimo 2 caracteres.</span
-      >
+        <span
+          class="erro__texto"
+          *ngIf="f.controls['nome']?.errors?.['required']"
+          >O campo deve ser preenchido.</span
+        >
+        <span
+          class="erro__texto"
+          *ngIf="f.controls['nome']?.errors?.['minlength']"
+          >O campo deve conter no mínimo 2 caracteres.</span
+        >
+      </div>
     </div>
     <div class="formulario__dupla">
       <div class="formulario__campo">
