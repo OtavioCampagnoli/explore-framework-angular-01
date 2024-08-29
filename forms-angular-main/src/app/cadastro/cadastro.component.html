@@ -38,7 +38,20 @@
           id="nascimento"
           type="date"
           class="campo__escrita"
+          ngModel
+          #nascimento="ngModel"
+          required
         />
+        <div
+          *ngIf="
+            (nascimento?.touched && nascimento?.invalid) || nascimento?.dirty
+          "
+        >
+          <app-mensagem
+            *ngIf="nascimento?.errors?.['required']"
+            mensagem="O campo nascimento deve ser preenchido"
+          ></app-mensagem>
+        </div>
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="telefone">Contato</label>
