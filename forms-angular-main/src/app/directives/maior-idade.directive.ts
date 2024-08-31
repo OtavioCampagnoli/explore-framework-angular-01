@@ -3,7 +3,7 @@ import {
   AbstractControl,
   NG_VALIDATORS,
   ValidationErrors,
-  Validators,
+  Validator,
 } from "@angular/forms";
 
 @Directive({
@@ -16,7 +16,7 @@ import {
     },
   ],
 })
-export class MaiorIdadeDirective implements Validators {
+export class MaiorIdadeDirective implements Validator {
   constructor() {}
 
   validate(control: AbstractControl): ValidationErrors | null {
@@ -27,6 +27,6 @@ export class MaiorIdadeDirective implements Validators {
 
     const ehMaior = anoNascimentoMais18 <= anoAtual;
 
-    return ehMaior ? null : { maiorIdadeValidator: true };
+    return ehMaior ? null : { 'maiorIdadeValidator': true };
   }
 }
